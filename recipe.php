@@ -119,13 +119,13 @@
 			console.log( data );
 
 			// title
-			$recipe.find('h1').html( title );
+			$recipe.find('h2').html( title );
 
 			// ingredients
 			for( var i = 0; i < data.length; i++ ) {
 				var a = data[i].gsx$quantity.$t;
 				var b = data[i].gsx$ingredient.$t;
-				$recipe.find('ul').append( '<li>'+b+' <em class="text-muted">&ndash; '+a+'</em></li>' );
+				$recipe.find('ul').append( '<li>'+b+' <em class="pull-right">'+a+'</em></li>' );
 			}
 
 			// description
