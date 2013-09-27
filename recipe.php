@@ -65,9 +65,9 @@
 
 		<section id="recipe" style="display: none" class="row">
 			<div class="col-md-12">
-				<h1>Title of the recipe</h1>
+				<h2>Title of the recipe</h2>
+				<br />
 			</div>
-			<br />
 			<div class="col-md-5" class="ingredients">
 				<ul class="list-unstyled" id="ingredients">
 				</ul> 
@@ -78,8 +78,8 @@
 					Cook <em class="text-muted">&ndash; <span id="cook"></span></em>,
 					Serves <em class="text-muted">&ndash; <span id="serves"></span></em>
 				</p>
-				<p class="description lead" id="description"></p>
-				<h2>Directions</h2>
+				<p class="description" id="description"></p>
+				<h3>Directions</h3>
 				<p class="directions" id="directions"></p>
 			</div>
 
@@ -134,8 +134,8 @@
 			// directions
 			$recipe.find('.directions').html( data[0].gsx$directions.$t );
 
-			$('#prep').html( data[0].gsx$prepcooktime.$t );
-			$('#cook').html( data[1].gsx$prepcooktime.$t );
+			$('#prep').html( data[0].gsx$prepcooktime.$t+'m' );
+			$('#cook').html( data[1].gsx$prepcooktime.$t+'m' );
 			$('#serves').html( data[0].gsx$serves.$t );
 
 			$recipe.fadeIn();
