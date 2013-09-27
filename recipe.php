@@ -63,8 +63,25 @@
 
 	<div class="container">
 
-		<section id="recipe" style="display: none">
-			<h1>Title of the recipe</h1>
+		<section id="recipe" style="display: none" class="row">
+			<div class="col-md-12">
+				<h1>Title of the recipe</h1>
+			</div>
+			<br />
+			<div class="col-md-5" class="ingredients">
+				<ul class="list-unstyled" id="ingredients">
+				</ul> 
+			</div>
+			<div class="col-md-7">
+				<p class="stats">
+					Prep. <em class="text-muted">&ndash; <span id="prep"></span></em>,
+					Cook <em class="text-muted">&ndash; <span id="cook"></span></em>,
+					Serves <em class="text-muted">&ndash; <span id="serves"></span></em>
+				</p>
+				<p class="description lead" id="description"></p>
+				<h2>Directions</h2>
+				<p class="directions" id="directions"></p>
+			</div>
 
 		</section>
 
@@ -99,7 +116,27 @@
 			var $recipe = $( '#recipe' );
 			$recipe.hide();
 
+			console.log( data );
+
+			// title
 			$recipe.find('h1').html( title );
+
+			// ingredients
+			for( var i = 0; i < data.length; i++ ) {
+				var a = data[i].gsx$quantity.$t;
+				var b = data[i].gsx$ingredient.$t;
+				$recipe.find('ul').append( '<li>'+b+' <em class="text-muted">&ndash; '+a+'</em></li>' );
+			}
+
+			// description
+			$recipe.find('.description').html( data[0].gsx$description.$t );
+
+			// directions
+			$recipe.find('.directions').html( data[0].gsx$directions.$t );
+
+			$('#prep').html( data[0].gsx$prepcooktime.$t );
+			$('#cook').html( data[1].gsx$prepcooktime.$t );
+			$('#serves').html( data[0].gsx$serves.$t );
 
 			$recipe.fadeIn();
 		}
